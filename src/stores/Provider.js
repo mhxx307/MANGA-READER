@@ -4,17 +4,31 @@ import Context from '~/stores/Context';
 
 function Provider({ children }) {
     const [mangaList, setMangaList] = useState([]);
+    const [pageNumber, setPageNumber] = useState(1);
 
-    const fetchMangaList = async () => {
-        const { data } = await axios.get(
-            'https://manga-api-be05.onrender.com/all/page=1',
-        );
-        setMangaList(data);
+    const loadMoreManga = () => {
+        axios
+            .get(`https://manga-api-be05.onrender.com/all/page=${pageNumber}`)
+            .then(({ data }) => {
+                setMangaList((prevMangaList) => [...prevMangaList, ...data]);
+            });
+    };
+
+    const handleScroll = (e) => {
+        console.log('scroll');
+        if (
+            window.innerHeight + e.target.documentElement.scrollTop + 1 >=
+            e.target.documentElement.scrollHeight
+        ) {
+            setPageNumber((prevPageNumber) => prevPageNumber + 1);
+        }
     };
 
     useEffect(() => {
-        fetchMangaList();
-    }, []);
+        loadMoreManga();
+        window.addEventListener('scroll', handleScroll);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pageNumber]);
 
     return (
         <Context.Provider value={{ mangaList, setMangaList }}>

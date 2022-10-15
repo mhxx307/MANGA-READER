@@ -10,6 +10,8 @@ const cx = classNames.bind(styles);
 
 function MangaList() {
     const { mangaList } = useContext(Context);
+    console.log(mangaList);
+
     return (
         <div className={cx('wrapper')}>
             <div className={cc('grid wide')}>
