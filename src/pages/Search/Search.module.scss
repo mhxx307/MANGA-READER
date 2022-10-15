@@ -1,0 +1,98 @@
+.wrapper {
+    --background-color-input: #1a1a1a;
+    width: 100%;
+    margin-top: var(--default-header-height);
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+}
+
+.inner {
+    margin-top: 33px;
+    height: 100%;
+    width: var(--default-width);
+}
+
+.title {
+    font-size: 4rem;
+}
+
+.nav {
+    margin-top: 38px;
+    display: flex;
+    justify-content: space-between;
+    .nav-item {
+        .text {
+            margin-bottom: 8px;
+        }
+        .input-wrap {
+            background-color: var(--background-color-input);
+            padding-left: 10px;
+            border: 1px solid var(--white-color);
+            border-radius: 3px;
+        }
+        .input {
+            background-color: var(--background-color-input);
+            color: var(--white-blur-color);
+            padding: 10px 25px 10px 10px;
+            font-size: 1.6rem;
+        }
+    }
+}
+
+.dropdown {
+    width: 25.8rem;
+    height: 3.8rem;
+    background-color: var(--background-color-input);
+    border: 1px solid var(--white-color);
+    border-radius: 3px;
+    position: relative;
+
+    &:hover .dropdown-list {
+        display: block;
+    }
+
+    .dropdown-select {
+        line-height: 3.8rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 8px;
+        color: var(--white-blur-color);
+        cursor: pointer;
+    }
+
+    .dropdown-list {
+        margin-top: 1rem;
+        border-radius: 3px;
+        background-color: var(--background-color-input);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: none;
+
+        &:before {
+            content: '';
+            height: 2.5rem;
+            position: absolute;
+            left: 0;
+            right: 0;
+            transform: translateY(-100%);
+        }
+
+        .dropdown-item {
+            padding: 1rem;
+            color: var(--white-blur-color);
+            text-transform: capitalize;
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: background-color 0.2s linear;
+
+            &:hover {
+                background-color: #999;
+                color: #ef5555;
+            }
+        }
+    }
+}
