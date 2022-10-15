@@ -1,5 +1,13 @@
+import classNames from 'classnames/bind';
+import styles from './Home.module.scss';
+const cx = classNames.bind(styles);
+
 function Home() {
-    return <div>Home page</div>;
+    return (
+        <div className={cx('wrapper')}>
+            {/* <div className={cx('manga-banner')}></div> */}
+        </div>
+    );
 }
 
 export default Home;

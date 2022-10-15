@@ -1,0 +1,32 @@
+.wrapper {
+    --margin-bottom: 30px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: var(--default-footer-height);
+    display: flex;
+    justify-content: center;
+}
+
+.inner {
+    width: var(--default-width);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .logo {
+        margin-bottom: var(--margin-bottom);
+    }
+
+    .nav {
+        margin-bottom: var(--margin-bottom);
+        .nav-item {
+            margin: 0 20px;
+            &:hover {
+                color: var(--primary-color);
+                transition: all 0.5s linear;
+            }
+        }
+    }
+}
