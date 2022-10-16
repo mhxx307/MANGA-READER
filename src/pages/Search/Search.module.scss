@@ -21,22 +21,26 @@
     margin-top: 38px;
     display: flex;
     justify-content: space-between;
-    .nav-item {
-        .text {
-            margin-bottom: 8px;
+}
+
+.nav-item {
+    p {
+        margin-bottom: 8px;
+    }
+    .input-wrap {
+        background-color: var(--background-color-input);
+        padding-left: 10px;
+        border: 1px solid var(--white-color);
+        border-radius: 3px;
+        &:focus-within {
+            border: 1px solid var(--primary-color);
         }
-        .input-wrap {
-            background-color: var(--background-color-input);
-            padding-left: 10px;
-            border: 1px solid var(--white-color);
-            border-radius: 3px;
-        }
-        .input {
-            background-color: var(--background-color-input);
-            color: var(--white-blur-color);
-            padding: 10px 25px 10px 10px;
-            font-size: 1.6rem;
-        }
+    }
+    .input {
+        background-color: var(--background-color-input);
+        color: var(--white-blur-color);
+        padding: 10px 25px 10px 10px;
+        font-size: 1.6rem;
     }
 }
 

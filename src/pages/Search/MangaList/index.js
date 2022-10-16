@@ -1,9 +1,9 @@
 import classNames from 'classnames/bind';
-import { MangaItem } from '../components';
 import styles from './MangaList.module.scss';
 import grid from '~/assets/css/grid.scss';
 import { useContext } from 'react';
 import Context from '~/stores/Context';
+import MangaItem from '../MangaItem';
 
 const cc = classNames.bind(grid);
 const cx = classNames.bind(styles);

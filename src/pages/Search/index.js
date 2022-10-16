@@ -4,7 +4,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
-import { MangaList } from '~/components/Layout';
+import MangaList from './MangaList';
 import styles from './Search.module.scss';
 
 const cx = classNames.bind(styles);
@@ -18,7 +18,7 @@ function Search() {
                 </div>
                 <ul className={cx('nav')}>
                     <li className={cx('nav-item')}>
-                        <p className={cx('text')}>Tìm kiếm</p>
+                        <p>Tìm kiếm</p>
                         <div className={cx('input-wrap')}>
                             <FontAwesomeIcon
                                 icon={faMagnifyingGlass}
@@ -31,7 +31,7 @@ function Search() {
                         </div>
                     </li>
                     <li className={cx('nav-item')}>
-                        <p className={cx('text')}>Thể loại</p>
+                        <p>Thể loại</p>
                         <div className={cx('dropdown')}>
                             <div className={cx('dropdown-select')}>
                                 <span className={cx('dropdown-selected')}>
@@ -56,7 +56,7 @@ function Search() {
                         </div>
                     </li>
                     <li className={cx('nav-item')}>
-                        <p className={cx('text')}>Tình trạng</p>
+                        <p>Tình trạng</p>
                         <div className={cx('dropdown')}>
                             <div className={cx('dropdown-select')}>
                                 <span className={cx('dropdown-selected')}>
