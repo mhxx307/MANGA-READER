@@ -23,49 +23,31 @@
     .logo {
         margin-right: 16px;
     }
+}
 
-    .nav-list {
-        display: flex;
-        align-items: center;
-        width: 640px;
-        .nav-item {
-            padding: 0 16px;
-            &:hover {
-                color: var(--white-color);
-                transition: var(--transition);
-            }
+.nav-list {
+    display: flex;
+    align-items: center;
+    width: 640px;
+    .nav-item {
+        color: var(--white-color);
+        padding: 0 16px;
+        &:hover {
+            color: var(--white-color);
+            transition: var(--transition);
         }
-        .nav-item.active {
-            color: var(--primary-color);
-        }
+    }
+    .nav-item.active {
+        color: var(--primary-color);
     }
 }
 
-.inner-right {
-    --margin-left: 16px;
-    .btn-login {
-        display: flex-inline;
-        align-items: center;
-        text-decoration: none;
-        color: var(--white-color);
-        padding: 8px 12px;
-        border-radius: 6px;
-        background-color: var(--primary-color);
-        margin-left: var(--margin-left);
-        cursor: pointer;
-
-        &:hover {
-            opacity: 0.8;
-            transition: var(--transition);
-        }
-    }
-    .search-icon {
-        font-size: 2rem;
-        margin-left: var(--margin-left);
-        color: var(--white-color);
-        &:hover {
-            color: var(--primary-color);
-            transition: var(--transition);
-        }
+.search-icon {
+    font-size: 2rem;
+    margin: 0 16px;
+    color: var(--white-color);
+    &:hover {
+        color: var(--primary-color);
+        transition: var(--transition);
     }
 }

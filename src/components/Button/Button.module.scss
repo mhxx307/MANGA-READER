@@ -1,0 +1,14 @@
+.wrapper {
+    display: flex-inline;
+    align-items: center;
+    color: var(--white-color);
+    padding: 8px 12px;
+    border-radius: 6px;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s linear;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}

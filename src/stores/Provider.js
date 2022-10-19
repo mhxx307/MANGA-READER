@@ -8,7 +8,7 @@ function Provider({ children }) {
 
     const loadMoreManga = () => {
         axios
-            .get(`https://manga-api-be05.onrender.com/all/page=${pageNumber}`)
+            .get(`https://manga-api-4cze.onrender.com/v1?page=${pageNumber}`)
             .then(({ data }) => {
                 setMangaList((prevMangaList) => [...prevMangaList, ...data]);
             });

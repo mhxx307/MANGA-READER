@@ -4,6 +4,7 @@ import images from '~/assets/images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
@@ -37,9 +38,7 @@ function Header() {
                     <Link to="/search" className={cx('search-icon')}>
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </Link>
-                    <Link to="/login" className={cx('btn-login')}>
-                        Đăng nhập
-                    </Link>
+                    <Button to="/login">Đăng nhập</Button>
                 </div>
             </div>
         </header>
