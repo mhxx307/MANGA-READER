@@ -18,15 +18,16 @@
     .logo {
         margin-bottom: var(--margin-bottom);
     }
+}
 
-    .nav {
-        margin-bottom: var(--margin-bottom);
-        .nav-item {
-            margin: 0 20px;
-            &:hover {
-                color: var(--primary-color);
-                transition: all 0.5s linear;
-            }
+.nav {
+    margin-bottom: var(--margin-bottom);
+    .nav-item {
+        color: var(--white-color);
+        margin: 0 20px;
+        &:hover {
+            color: var(--primary-color);
+            transition: all 0.5s linear;
         }
     }
 }

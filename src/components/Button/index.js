@@ -3,9 +3,20 @@ import { Link } from 'react-router-dom';
 import styles from './Button.module.scss';
 
 const cx = classNames.bind(styles);
-function Button({ children, to, href, ocClick, ...passProps }) {
+function Button({
+    children,
+    to,
+    href,
+    ocClick,
+    primary = false,
+    ...passProps
+}) {
     let Comp = 'button';
-    const classes = cx('wrapper');
+
+    const classes = cx('wrapper', {
+        primary,
+    });
+
     const props = {
         ocClick,
         ...passProps,

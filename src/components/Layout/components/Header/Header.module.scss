@@ -25,23 +25,6 @@
     }
 }
 
-.nav-list {
-    display: flex;
-    align-items: center;
-    width: 640px;
-    .nav-item {
-        color: var(--white-color);
-        padding: 0 16px;
-        &:hover {
-            color: var(--white-color);
-            transition: var(--transition);
-        }
-    }
-    .nav-item.active {
-        color: var(--primary-color);
-    }
-}
-
 .search-icon {
     font-size: 2rem;
     margin: 0 16px;

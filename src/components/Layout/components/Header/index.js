@@ -1,10 +1,12 @@
 import classNames from 'classnames/bind';
-import styles from './Header.module.scss';
-import images from '~/assets/images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+
+import images from '~/assets/images';
+import styles from './Header.module.scss';
 import Button from '~/components/Button';
+import NavigationHeader from './NavigationHeader';
 
 const cx = classNames.bind(styles);
 
@@ -21,24 +23,16 @@ function Header() {
                     </div>
 
                     {/* nav */}
-                    <div className={cx('nav-list')}>
-                        <Link to="/" className={cx('nav-item', 'active')}>
-                            Manga
-                        </Link>
-                        <Link to="/anime" className={cx('nav-item')}>
-                            Anime
-                        </Link>
-                        <Link to="/lightNovel" className={cx('nav-item')}>
-                            Light novel
-                        </Link>
-                    </div>
+                    <NavigationHeader />
                 </div>
 
                 <div className={cx('inner-right')}>
                     <Link to="/search" className={cx('search-icon')}>
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </Link>
-                    <Button to="/login">Đăng nhập</Button>
+                    <Button primary to="/login">
+                        Đăng nhập
+                    </Button>
                 </div>
             </div>
         </header>
