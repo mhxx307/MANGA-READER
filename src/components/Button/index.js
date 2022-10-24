@@ -3,14 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './Button.module.scss';
 
 const cx = classNames.bind(styles);
-function Button({
-    children,
-    to,
-    href,
-    ocClick,
-    primary = false,
-    ...passProps
-}) {
+function Button({ children, to, href, onClick, primary = false, ...passProps }) {
     let Comp = 'button';
 
     const classes = cx('wrapper', {
@@ -18,7 +11,7 @@ function Button({
     });
 
     const props = {
-        ocClick,
+        onClick,
         ...passProps,
     };
 

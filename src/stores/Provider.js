@@ -5,17 +5,200 @@ import Context from '~/stores/Context';
 function Provider({ children }) {
     const [mangaList, setMangaList] = useState([]);
     const [pageNumber, setPageNumber] = useState(1);
+    const [categoryName, setCategoryName] = useState('Thể loại');
+    const [statusName, setStatusName] = useState('Tình trạng');
 
-    const loadMoreManga = () => {
-        axios
-            .get(`https://manga-api-4cze.onrender.com/v1?page=${pageNumber}`)
-            .then(({ data }) => {
-                setMangaList((prevMangaList) => [...prevMangaList, ...data]);
-            });
+    let category = null;
+    let status = -1;
+
+    switch (categoryName) {
+        case 'Action':
+            category = 'action-95';
+            break;
+        case 'Adult':
+            category = 'truong-thanh';
+            break;
+        case 'Adventure':
+            category = 'adventure';
+            break;
+        case 'Anime':
+            category = 'anime';
+            break;
+        case 'Chuyển sinh':
+            category = 'chuyen-sinh-2130';
+            break;
+        case 'Comedy':
+            category = 'comedy-99';
+            break;
+        case 'Comic':
+            category = 'comic';
+            break;
+        case 'Cooking':
+            category = 'cooking';
+            break;
+        case 'Cổ đại':
+            category = 'co-dai-207';
+            break;
+        case 'Doujinshi':
+            category = 'doujinshi';
+            break;
+        case 'Drama':
+            category = 'drama-103';
+            break;
+        case 'Ecchi':
+            category = 'ecchi';
+            break;
+        case 'Fantasy':
+            category = 'fantasy-105';
+            break;
+        case 'Gender Bender':
+            category = 'gender-bender';
+            break;
+        case 'Harem':
+            category = 'harem-107';
+            break;
+        case 'Historical':
+            category = 'historical';
+            break;
+        case 'Horror':
+            category = 'horror';
+            break;
+        case 'Josei':
+            category = 'josei';
+            break;
+        case 'Live Action':
+            category = 'live-action';
+            break;
+        case 'Manga':
+            category = 'manga-112';
+            break;
+        case 'Manhua':
+            category = 'manhua';
+            break;
+        case 'Manhwa':
+            category = 'manhwa-11400';
+            break;
+        case 'Martial Arts':
+            category = 'martial-arts';
+            break;
+        case 'Mature':
+            category = 'mature';
+            break;
+        case 'Mecha':
+            category = 'mecha-117';
+            break;
+        case 'Mystery':
+            category = 'mystery';
+            break;
+        case 'One shot':
+            category = 'one-shot';
+            break;
+        case 'Psychological':
+            category = 'psychological';
+            break;
+        case 'Romance':
+            category = 'romance-121';
+            break;
+        case 'School Life':
+            category = 'school-life';
+            break;
+        case 'Sci-fi':
+            category = 'sci-fi';
+            break;
+        case 'Seinen':
+            category = 'seinen';
+            break;
+        case 'Shoujo':
+            category = 'shoujo';
+            break;
+        case 'Shoujo Ai':
+            category = 'shoujo-ai-126';
+            break;
+        case 'Shounen':
+            category = 'shounen-127';
+            break;
+        case 'Shounen Ai':
+            category = 'shounen-ai';
+            break;
+        case 'Slice of Life':
+            category = 'slice-of-life';
+            break;
+        case 'Smut':
+            category = 'smut';
+            break;
+        case 'Soft Yuri':
+            category = 'soft-yuri';
+            break;
+        case 'Sports':
+            category = 'sports';
+            break;
+        case 'Supernatural':
+            category = 'supernatural';
+            break;
+        case 'Thiếu nhi':
+            category = 'thieu-nhi';
+            break;
+        case 'Tragedy':
+            category = 'tragedy-136';
+            break;
+        case 'Trinh Thám':
+            category = 'trinh-tham';
+            break;
+        case 'Truyện scan':
+            category = 'truyen-scan';
+            break;
+        case 'Truyện Màu':
+            category = 'truyen-mau';
+            break;
+        case 'Webtoon':
+            category = 'webtoon';
+            break;
+        case 'Xuyên Không':
+            category = 'xuyen-khong-205';
+            break;
+        default:
+            category = null;
+            break;
+    }
+
+    switch (statusName) {
+        case 'Tất cả':
+            status = -1;
+            break;
+        case 'Đang tiến hành':
+            status = 1;
+            break;
+        case 'Đã hoàn thành':
+            status = 2;
+            break;
+        default:
+            status = -1;
+            break;
+    }
+
+    const loadMoreManga = async () => {
+        try {
+            const { data } = await axios.get(
+                `https://manga-api-4cze.onrender.com/v1?status=${status}&page=${pageNumber}`,
+            );
+            setMangaList((prevMangaList) => [...prevMangaList, ...data]);
+        } catch (error) {
+            throw new Error(error);
+        }
+    };
+
+    const loadMoreMangaByCategory = async () => {
+        try {
+            const { data } = await axios.get(
+                `https://manga-api-4cze.onrender.com/v1/${category}?status=${status}&page=${pageNumber}`,
+            );
+            setMangaList((prevMangaList) => [...prevMangaList, ...data]);
+        } catch (error) {
+            throw new Error(error);
+        }
     };
 
     const handleScroll = (e) => {
-        console.log('scroll');
         if (
             window.innerHeight + e.target.documentElement.scrollTop + 1 >=
             e.target.documentElement.scrollHeight
@@ -25,13 +208,28 @@ function Provider({ children }) {
     };
 
     useEffect(() => {
-        loadMoreManga();
+        if (category) {
+            console.log('category');
+            loadMoreMangaByCategory();
+        } else {
+            console.log('load more manga');
+            loadMoreManga();
+        }
         window.addEventListener('scroll', handleScroll);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [pageNumber]);
+    }, [categoryName, pageNumber, statusName]);
 
     return (
-        <Context.Provider value={{ mangaList, setMangaList }}>
+        <Context.Provider
+            value={{
+                mangaList,
+                setMangaList,
+                categoryName,
+                setCategoryName,
+                statusName,
+                setStatusName,
+            }}
+        >
             {children}
         </Context.Provider>
     );

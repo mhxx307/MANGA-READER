@@ -4,6 +4,7 @@ import grid from '~/assets/css/grid.scss';
 import { useContext } from 'react';
 import Context from '~/stores/Context';
 import MangaItem from '../MangaItem';
+import Tippy from '@tippyjs/react';
 
 const cc = classNames.bind(grid);
 const cx = classNames.bind(styles);
@@ -18,13 +19,11 @@ function MangaList() {
                 <div className={cc('row')}>
                     {mangaList.map((manga, index) => {
                         return (
-                            <div
-                                className={cc('col c-2')}
-                                key={index}
-                                style={{ marginBottom: '20px' }}
-                            >
-                                <MangaItem manga={manga} />
-                            </div>
+                            <Tippy content="hello" placement="right" key={index}>
+                                <div className={cc('col c-2')} style={{ marginBottom: '20px' }}>
+                                    <MangaItem manga={manga} />
+                                </div>
+                            </Tippy>
                         );
                     })}
                 </div>

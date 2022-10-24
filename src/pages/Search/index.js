@@ -1,14 +1,17 @@
-import {
-    faAngleDown,
-    faMagnifyingGlass,
-} from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
+import { useContext } from 'react';
+
 import MangaList from './MangaList';
 import styles from './Search.module.scss';
+import { categories, status } from '~/stores/DropdownData';
+import Context from '~/stores/Context';
 
 const cx = classNames.bind(styles);
 function Search() {
+    const { categoryName, setCategoryName, statusName, setStatusName, setMangaList } =
+        useContext(Context);
     return (
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -24,34 +27,33 @@ function Search() {
                                 icon={faMagnifyingGlass}
                                 className={cx('search-icon')}
                             />
-                            <input
-                                className={cx('input')}
-                                placeholder="Enter manga name..."
-                            />
+                            <input className={cx('input')} placeholder="Enter manga name..." />
                         </div>
                     </li>
                     <li className={cx('nav-item')}>
                         <p>Thể loại</p>
                         <div className={cx('dropdown')}>
                             <div className={cx('dropdown-select')}>
-                                <span className={cx('dropdown-selected')}>
-                                    Thể loại
-                                </span>
+                                <span className={cx('dropdown-selected')}>{categoryName}</span>
                                 <span className={cx('dropdown-icon')}>
                                     <FontAwesomeIcon icon={faAngleDown} />
                                 </span>
                             </div>
                             <ul className={cx('dropdown-list')}>
-                                <li className={cx('dropdown-item')}>
-                                    <span className={cx('dropdown-text')}>
-                                        New
-                                    </span>
-                                </li>
-                                <li className={cx('dropdown-item')}>
-                                    <span className={cx('dropdown-text')}>
-                                        New
-                                    </span>
-                                </li>
+                                {categories.map((category, index) => {
+                                    return (
+                                        <li
+                                            className={cx('dropdown-item')}
+                                            key={index}
+                                            onClick={() => {
+                                                setMangaList([]);
+                                                setCategoryName(category);
+                                            }}
+                                        >
+                                            <span className={cx('dropdown-text')}>{category}</span>
+                                        </li>
+                                    );
+                                })}
                             </ul>
                         </div>
                     </li>
@@ -59,19 +61,26 @@ function Search() {
                         <p>Tình trạng</p>
                         <div className={cx('dropdown')}>
                             <div className={cx('dropdown-select')}>
-                                <span className={cx('dropdown-selected')}>
-                                    Tình trạng
-                                </span>
+                                <span className={cx('dropdown-selected')}>{statusName}</span>
                                 <span className={cx('dropdown-icon')}>
                                     <FontAwesomeIcon icon={faAngleDown} />
                                 </span>
                             </div>
                             <ul className={cx('dropdown-list')}>
-                                <li className={cx('dropdown-item')}>
-                                    <span className={cx('dropdown-text')}>
-                                        New
-                                    </span>
-                                </li>
+                                {status.map((status, index) => {
+                                    return (
+                                        <li
+                                            className={cx('dropdown-item')}
+                                            key={index}
+                                            onClick={() => {
+                                                setMangaList([]);
+                                                setStatusName(status);
+                                            }}
+                                        >
+                                            <span className={cx('dropdown-text')}>{status}</span>
+                                        </li>
+                                    );
+                                })}
                             </ul>
                         </div>
                     </li>

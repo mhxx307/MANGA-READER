@@ -52,6 +52,15 @@
     border-radius: 3px;
     position: relative;
 
+    &:before {
+        content: '';
+        height: 2.5rem;
+        position: absolute;
+        left: 0;
+        right: 0;
+        transform: translateY(100%);
+    }
+
     &:hover .dropdown-list {
         display: block;
     }
@@ -67,6 +76,9 @@
     }
 
     .dropdown-list {
+        max-height: 240px;
+        overflow: scroll;
+        transition: all 0.4s linear;
         margin-top: 1rem;
         border-radius: 3px;
         background-color: var(--background-color-input);
@@ -75,15 +87,6 @@
         left: 0;
         right: 0;
         display: none;
-
-        &:before {
-            content: '';
-            height: 2.5rem;
-            position: absolute;
-            left: 0;
-            right: 0;
-            transform: translateY(-100%);
-        }
 
         .dropdown-item {
             padding: 1rem;
