@@ -1,0 +1,20 @@
+.postSk {
+    animation: skeleton 1s ease infinite alternate;
+}
+
+@keyframes skeleton {
+    to {
+        opacity: 0.5;
+    }
+}
+
+.postSkImg {
+    background-color: #313131;
+    width: 171px;
+    height: 263px;
+}
+
+.postSkInfo {
+    display: flex;
+    margin-top: 15px;
+}

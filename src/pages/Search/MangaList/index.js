@@ -9,13 +9,18 @@ import grid from '~/assets/css/grid.scss';
 import MangaItem from '../MangaItem';
 import { sorts } from '~/stores/DropdownData';
 import Context from '~/stores/Context';
+import Skeleton from '~/components/Skeleton/Skeleton';
+import { Link } from 'react-router-dom';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 const cc = classNames.bind(grid);
 const cx = classNames.bind(styles);
 
 function MangaList() {
-    const { mangaList, setMangaList, sortName, setSortName } = useContext(Context);
+    const { mangaList, setMangaList, sortName, setSortName, isLoading } = useContext(Context);
     console.log(mangaList);
+
+    // const {manga, setManga} = useState({});
 
     const { visible, setVisible } = useState(false);
     const { mangaInfoVisible, setMangaInfoVisible } = useState(false);
@@ -55,59 +60,72 @@ function MangaList() {
                         </div>
                     </Tippy>
                 </div>
-                <div className={cc('row')}>
-                    {mangaList.map((manga, index) => {
-                        return (
-                            <Tippy
-                                interactive={false}
-                                visible={mangaInfoVisible}
-                                placement="right"
-                                key={index}
-                                render={(attrs) => (
-                                    <div
-                                        className={cx('manga-info')}
-                                        tabIndex="-1"
-                                        {...attrs}
-                                        style={{
-                                            backgroundImage: `url(${manga.image})`,
-                                        }}
-                                    >
-                                        <h2 className={cx('title')}>{manga.name}</h2>
-                                        <p className={cx('description')}>{manga.description}</p>
-                                        <p className={cx('categories')}>{manga.categories}</p>
-                                        <div className={cx('stat')}>
-                                            <div className={cx('follow')}>
-                                                <span className={cx('follow-icon')}>
-                                                    <FontAwesomeIcon icon={faHeart} />
-                                                </span>
-                                                <span className={cx('follow-text')}>
-                                                    {manga.follow}
-                                                </span>
-                                            </div>
 
-                                            <div className={cx('view')}>
-                                                <span className={cx('view-icon')}>
-                                                    <FontAwesomeIcon icon={faEye} />
-                                                </span>
-                                                <span className={cx('view-text')}>
-                                                    {manga.view}
-                                                </span>
+                <InfiniteScroll
+                    style={{ overflowX: 'hidden' }}
+                    dataLength={mangaList.length}
+                    hasMore={isLoading}
+                    loader={
+                        <div className={cc('row')}>
+                            <Skeleton type="feed" />
+                        </div>
+                    }
+                >
+                    <div className={cc('row')}>
+                        {mangaList.map((manga, index) => {
+                            return (
+                                <Tippy
+                                    interactive={false}
+                                    visible={mangaInfoVisible}
+                                    placement="right"
+                                    key={index}
+                                    render={(attrs) => (
+                                        <Link
+                                            to="/mangaDetail"
+                                            className={cx('manga-info')}
+                                            tabIndex="-1"
+                                            {...attrs}
+                                            style={{
+                                                backgroundImage: `url(${manga.image})`,
+                                            }}
+                                        >
+                                            <h2 className={cx('title')}>{manga.name}</h2>
+                                            <p className={cx('description')}>{manga.description}</p>
+                                            <p className={cx('categories')}>{manga.categories}</p>
+                                            <div className={cx('stat')}>
+                                                <div className={cx('follow')}>
+                                                    <span className={cx('follow-icon')}>
+                                                        <FontAwesomeIcon icon={faHeart} />
+                                                    </span>
+                                                    <span className={cx('follow-text')}>
+                                                        {manga.follow}
+                                                    </span>
+                                                </div>
+
+                                                <div className={cx('view')}>
+                                                    <span className={cx('view-icon')}>
+                                                        <FontAwesomeIcon icon={faEye} />
+                                                    </span>
+                                                    <span className={cx('view-text')}>
+                                                        {manga.view}
+                                                    </span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                )}
-                            >
-                                <div
-                                    className={cc('col c-2')}
-                                    style={{ marginBottom: '20px' }}
-                                    onClick={() => setMangaInfoVisible(!mangaInfoVisible)}
+                                        </Link>
+                                    )}
                                 >
-                                    <MangaItem manga={manga} />
-                                </div>
-                            </Tippy>
-                        );
-                    })}
-                </div>
+                                    <div
+                                        className={cc('col c-2')}
+                                        style={{ marginBottom: '20px' }}
+                                        onClick={() => setMangaInfoVisible(!mangaInfoVisible)}
+                                    >
+                                        <MangaItem manga={manga} />
+                                    </div>
+                                </Tippy>
+                            );
+                        })}
+                    </div>
+                </InfiniteScroll>
             </div>
         </div>
     );

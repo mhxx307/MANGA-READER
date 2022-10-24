@@ -8,6 +8,7 @@ function Provider({ children }) {
     const [categoryName, setCategoryName] = useState('Thể loại');
     const [statusName, setStatusName] = useState('Tình trạng');
     const [sortName, setSortName] = useState('Ngày cập nhật');
+    const [isLoading, setIsLoading] = useState(false);
 
     let category = null;
     let status = -1;
@@ -209,6 +210,7 @@ function Provider({ children }) {
     }
 
     const loadMoreManga = async () => {
+        setIsLoading(true);
         try {
             const { data } = await axios.get(
                 `https://manga-api-4cze.onrender.com/v1?status=${status}&sort=${sort}&page=${pageNumber}`,
@@ -217,9 +219,11 @@ function Provider({ children }) {
         } catch (error) {
             throw new Error(error);
         }
+        setIsLoading(false);
     };
 
     const loadMoreMangaByCategory = async () => {
+        setIsLoading(true);
         try {
             const { data } = await axios.get(
                 `https://manga-api-4cze.onrender.com/v1/${category}?status=${status}&page=${pageNumber}`,
@@ -228,6 +232,7 @@ function Provider({ children }) {
         } catch (error) {
             throw new Error(error);
         }
+        setIsLoading(false);
     };
 
     const handleScroll = (e) => {
@@ -262,6 +267,8 @@ function Provider({ children }) {
                 setStatusName,
                 sortName,
                 setSortName,
+                isLoading,
+                setIsLoading,
             }}
         >
             {children}
