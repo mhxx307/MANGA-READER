@@ -11,6 +11,9 @@
     --default-header-height: 64px;
     --default-width: 1150px;
     --default-footer-height: 300px;
+
+    // animation
+    --fade-in: fadeIn 0.8s;
 }
 
 * {
@@ -56,4 +59,14 @@ li {
 ::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 10px;
+}
+
+// animation
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

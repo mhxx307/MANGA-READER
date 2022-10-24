@@ -37,15 +37,6 @@
     }
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
 .manga-info {
     position: relative;
     display: flex;
@@ -56,7 +47,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     padding: 20px;
-    animation: fadeIn 0.8s;
+    animation: var(--fade-in);
 
     &::after {
         content: '';

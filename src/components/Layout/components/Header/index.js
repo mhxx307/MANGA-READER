@@ -7,12 +7,25 @@ import images from '~/assets/images';
 import styles from './Header.module.scss';
 import Button from '~/components/Button';
 import NavigationHeader from './NavigationHeader';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
 function Header() {
+    const [navbar, setNavbar] = useState(false);
+
+    const changeBackground = () => {
+        if (window.scrollY >= 64) {
+            setNavbar(true);
+        } else {
+            setNavbar(false);
+        }
+    };
+
+    window.addEventListener('scroll', changeBackground);
+
     return (
-        <header className={cx('wrapper')}>
+        <header className={navbar ? cx('wrapper', 'active') : cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('inner-left')}>
                     {/* logo */}
