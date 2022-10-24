@@ -46,3 +46,14 @@ a[href] {
 li {
     list-style: none;
 }
+
+// scroll bar
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}

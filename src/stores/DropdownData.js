@@ -50,4 +50,16 @@ const categories = [
 
 const status = ['Tất cả', 'Đang tiến hành', 'Đã hoàn thành'];
 
-export { categories, status };
+const sorts = [
+    'Ngày cập nhật',
+    'Truyện mới',
+    'Top all',
+    'Top tháng',
+    'Top tuần',
+    'Top ngày',
+    'Theo dõi',
+    'Bình luận',
+    'Số chapter',
+];
+
+export { categories, status, sorts };

@@ -1,3 +1,38 @@
 .wrapper {
-    margin-top: 68px;
+    margin-top: 88px;
+}
+
+.filter {
+    margin-bottom: 38px;
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+.filter-wrap {
+    color: var(--white-blur-color);
+    font-size: 1.6rem;
+}
+
+.filter-icon {
+    margin-right: 10px;
+}
+
+.select {
+    height: 200px;
+    overflow-y: scroll;
+    background-color: var(--black-color);
+    color: var(--white-blur-color);
+    border: none;
+    font-size: 1.6rem;
+    outline: none;
+    cursor: pointer;
+}
+
+.option {
+    background-color: var(--background-color-input);
+    padding: 10px;
+    &:hover {
+        color: var(--primary-color);
+    }
 }

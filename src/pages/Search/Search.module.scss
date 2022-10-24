@@ -54,7 +54,7 @@
 
     &:before {
         content: '';
-        height: 2.5rem;
+        height: 2.3rem;
         position: absolute;
         left: 0;
         right: 0;
@@ -76,8 +76,8 @@
     }
 
     .dropdown-list {
-        max-height: 240px;
-        overflow: scroll;
+        max-height: 220px;
+        overflow-y: scroll;
         transition: all 0.4s linear;
         margin-top: 1rem;
         border-radius: 3px;
@@ -87,6 +87,7 @@
         left: 0;
         right: 0;
         display: none;
+        z-index: 10;
 
         .dropdown-item {
             padding: 1rem;

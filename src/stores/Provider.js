@@ -7,6 +7,7 @@ function Provider({ children }) {
     const [pageNumber, setPageNumber] = useState(1);
     const [categoryName, setCategoryName] = useState('Thể loại');
     const [statusName, setStatusName] = useState('Tình trạng');
+    const [sortName, setSortName] = useState('Ngày cập nhật');
 
     let category = null;
     let status = -1;
@@ -228,6 +229,8 @@ function Provider({ children }) {
                 setCategoryName,
                 statusName,
                 setStatusName,
+                sortName,
+                setSortName,
             }}
         >
             {children}
