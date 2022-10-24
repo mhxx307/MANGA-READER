@@ -12,6 +12,7 @@ import Context from '~/stores/Context';
 import Skeleton from '~/components/Skeleton/Skeleton';
 import { Link } from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import randomColor from 'randomcolor';
 
 const cc = classNames.bind(grid);
 const cx = classNames.bind(styles);
@@ -73,6 +74,10 @@ function MangaList() {
                 >
                     <div className={cc('row')}>
                         {mangaList.map((manga, index) => {
+                            var color = randomColor({
+                                luminosity: 'bright',
+                                format: 'rgb',
+                            });
                             return (
                                 <Tippy
                                     interactive={false}
@@ -89,9 +94,19 @@ function MangaList() {
                                                 backgroundImage: `url(${manga.image})`,
                                             }}
                                         >
-                                            <h2 className={cx('title')}>{manga.name}</h2>
+                                            <h2 className={cx('title')} style={{ color: color }}>
+                                                {manga.name}
+                                            </h2>
+
                                             <p className={cx('description')}>{manga.description}</p>
-                                            <p className={cx('categories')}>{manga.categories}</p>
+
+                                            <p
+                                                className={cx('categories')}
+                                                style={{ color: color }}
+                                            >
+                                                {manga.categories}
+                                            </p>
+
                                             <div className={cx('stat')}>
                                                 <div className={cx('follow')}>
                                                     <span className={cx('follow-icon')}>
@@ -119,7 +134,7 @@ function MangaList() {
                                         style={{ marginBottom: '20px' }}
                                         onClick={() => setMangaInfoVisible(!mangaInfoVisible)}
                                     >
-                                        <MangaItem manga={manga} />
+                                        <MangaItem manga={manga} color={color} />
                                     </div>
                                 </Tippy>
                             );

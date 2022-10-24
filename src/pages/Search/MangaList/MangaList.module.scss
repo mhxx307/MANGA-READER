@@ -47,6 +47,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     padding: 20px;
+    border-radius: 3px;
     animation: var(--fade-in);
 
     &::after {
@@ -56,7 +57,7 @@
         height: 100%;
         top: 0;
         left: 0;
-        background-color: rgba(0, 0, 0, 0.3);
+        background-color: rgba(0, 0, 0, 0.7);
         backdrop-filter: blur(2px);
     }
 }
@@ -92,6 +93,11 @@
 
     .follow {
         margin-right: 10px;
+    }
+
+    .follow-text,
+    .view-text {
+        color: var(--white-color);
     }
 
     .follow-icon {
