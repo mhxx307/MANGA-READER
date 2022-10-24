@@ -8,7 +8,7 @@ function MangaItem({ manga }) {
     return (
         <Link to="/mangaDetail" className={cx('wrapper')}>
             <img src={manga.image} alt="manga" className={cx('background')} />
-            <p>{manga.name}</p>
+            <p className={cx('name')}>{manga.name}</p>
         </Link>
     );
 }

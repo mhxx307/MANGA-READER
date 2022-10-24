@@ -11,6 +11,7 @@ function Provider({ children }) {
 
     let category = null;
     let status = -1;
+    let sort = 0;
 
     switch (categoryName) {
         case 'Action':
@@ -177,10 +178,40 @@ function Provider({ children }) {
             break;
     }
 
+    switch (sortName) {
+        case 'Ngày cập nhật':
+            sort = 0;
+            break;
+        case 'Truyện mới':
+            sort = 15;
+            break;
+        case 'Top all':
+            sort = 10;
+            break;
+        case 'Top tháng':
+            sort = 11;
+            break;
+        case 'Top tuần':
+            sort = 12;
+            break;
+        case 'Top ngày':
+            sort = 13;
+            break;
+        case 'Theo dõi':
+            sort = 20;
+            break;
+        case 'Số chapter':
+            sort = 30;
+            break;
+        default:
+            sort = 0;
+            break;
+    }
+
     const loadMoreManga = async () => {
         try {
             const { data } = await axios.get(
-                `https://manga-api-4cze.onrender.com/v1?status=${status}&page=${pageNumber}`,
+                `https://manga-api-4cze.onrender.com/v1?status=${status}&sort=${sort}&page=${pageNumber}`,
             );
             setMangaList((prevMangaList) => [...prevMangaList, ...data]);
         } catch (error) {
@@ -218,7 +249,7 @@ function Provider({ children }) {
         }
         window.addEventListener('scroll', handleScroll);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [categoryName, pageNumber, statusName]);
+    }, [categoryName, pageNumber, statusName, sortName]);
 
     return (
         <Context.Provider

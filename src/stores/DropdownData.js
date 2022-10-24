@@ -58,7 +58,6 @@ const sorts = [
     'Top tuần',
     'Top ngày',
     'Theo dõi',
-    'Bình luận',
     'Số chapter',
 ];
 
