@@ -2,12 +2,12 @@
     display: flex;
     align-items: center;
     width: 640px;
-    .nav-item {
-        color: var(--white-blur-color);
-        padding: 0 16px;
-        &:hover {
-            color: var(--white-color);
-            transition: var(--transition);
-        }
+}
+
+.nav-item {
+    padding: 0 16px;
+    &:hover {
+        color: var(--white-color) !important;
+        transition: var(--transition);
     }
 }

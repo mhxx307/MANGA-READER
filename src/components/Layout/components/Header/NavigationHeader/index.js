@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 function NavigationHeader() {
     const activeStyle = ({ isActive }) => {
         return {
-            color: isActive ? 'var(--primary-color)' : 'var(--white-color)',
+            color: isActive ? 'var(--primary-color)' : 'var(--white-blur-color)',
         };
     };
 
