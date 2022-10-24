@@ -16,7 +16,7 @@ function Skeleton({ type }) {
             </div>
         </div>
     );
-    if (type === 'feed') return Array(COUNTER).fill(<FeedSkeleton />);
+    if (type === 'feed') return Array.from({ length: COUNTER }, (a, i) => <FeedSkeleton key={i} />);
 }
 
 export default Skeleton;
