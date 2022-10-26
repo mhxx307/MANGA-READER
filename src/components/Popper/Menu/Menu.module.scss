@@ -1,0 +1,29 @@
+.menu-list {
+    width: 200px;
+
+    .menu-item {
+        margin-left: 0;
+    }
+}
+
+.menu-popper {
+    padding-bottom: 8px;
+}
+
+.menu-item {
+    // chỉnh vị trí cho menu item
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+
+    border-radius: 0;
+    transition: all 0.2s linear;
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 11px 16px;
+    background-color: #0d0d0d;
+    color: var(--white-color);
+    &:hover {
+        background-color: #757575;
+    }
+}

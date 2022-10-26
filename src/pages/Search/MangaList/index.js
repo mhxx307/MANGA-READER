@@ -34,6 +34,7 @@ function MangaList() {
                         interactive={true}
                         visible={visible}
                         placement="bottom"
+                        trigger="click"
                         render={(attrs) => (
                             <div className={cx('select')} tabIndex="-1" {...attrs}>
                                 {sorts.map((sort, index) => {

@@ -3,11 +3,22 @@ import { Link } from 'react-router-dom';
 import styles from './Button.module.scss';
 
 const cx = classNames.bind(styles);
-function Button({ children, to, href, onClick, primary = false, ...passProps }) {
+function Button({
+    to,
+    href,
+    leftIcon,
+    rightIcon,
+    primary = false,
+    children,
+    className,
+    onClick,
+    ...passProps
+}) {
     let Comp = 'button';
 
     const classes = cx('wrapper', {
         primary,
+        [className]: className,
     });
 
     const props = {
@@ -25,7 +36,9 @@ function Button({ children, to, href, onClick, primary = false, ...passProps }) 
 
     return (
         <Comp className={classes} {...props}>
-            {children}
+            {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
+            <span className={cx('title')}>{children}</span>
+            {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
         </Comp>
     );
 }

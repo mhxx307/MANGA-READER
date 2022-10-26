@@ -7,6 +7,11 @@
     cursor: pointer;
 }
 
+.icon + .title,
+.title + .icon {
+    margin-left: 8px;
+}
+
 .primary {
     color: var(--white-color);
     background-color: var(--primary-color);

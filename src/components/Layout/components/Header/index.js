@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faSignOut } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 import images from '~/assets/images';
@@ -8,8 +8,12 @@ import styles from './Header.module.scss';
 import Button from '~/components/Button';
 import NavigationHeader from './NavigationHeader';
 import { useState } from 'react';
+import Menu from '~/components/Popper/Menu';
+import Tippy from '@tippyjs/react';
 
 const cx = classNames.bind(styles);
+
+const MENU_ITEMS = [{ icon: <FontAwesomeIcon icon={faSignOut} />, title: 'Đăng xuất' }];
 
 function Header() {
     const [navbar, setNavbar] = useState(false);
@@ -23,6 +27,9 @@ function Header() {
     };
 
     window.addEventListener('scroll', changeBackground);
+
+    const imageTest =
+        'https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg';
 
     return (
         <header className={navbar ? cx('wrapper', 'active') : cx('wrapper')}>
@@ -46,6 +53,11 @@ function Header() {
                     <Button primary to="/login">
                         Đăng nhập
                     </Button>
+                    <Menu items={MENU_ITEMS}>
+                        <span className={cx('avatar')}>
+                            <img src={imageTest} alt="avatar" className={cx('avatar-img')} />
+                        </span>
+                    </Menu>
                 </div>
             </div>
         </header>
