@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass, faSignOut } from '@fortawesome/free-solid-svg-icons';
+import { faCloudArrowUp, faMagnifyingGlass, faSignOut } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 import images from '~/assets/images';
@@ -9,11 +9,13 @@ import Button from '~/components/Button';
 import NavigationHeader from './NavigationHeader';
 import { useState } from 'react';
 import Menu from '~/components/Popper/Menu';
-import Tippy from '@tippyjs/react';
 
 const cx = classNames.bind(styles);
 
-const MENU_ITEMS = [{ icon: <FontAwesomeIcon icon={faSignOut} />, title: 'Đăng xuất' }];
+const MENU_ITEMS = [
+    { icon: <FontAwesomeIcon icon={faCloudArrowUp} />, title: 'Upload' },
+    { icon: <FontAwesomeIcon icon={faSignOut} />, title: 'Đăng xuất' },
+];
 
 function Header() {
     const [navbar, setNavbar] = useState(false);
@@ -25,6 +27,8 @@ function Header() {
             setNavbar(false);
         }
     };
+
+    const currentUser = false;
 
     window.addEventListener('scroll', changeBackground);
 
@@ -50,14 +54,17 @@ function Header() {
                     <Link to="/search" className={cx('search-icon')}>
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </Link>
-                    <Button primary to="/login">
-                        Đăng nhập
-                    </Button>
-                    <Menu items={MENU_ITEMS}>
-                        <span className={cx('avatar')}>
-                            <img src={imageTest} alt="avatar" className={cx('avatar-img')} />
-                        </span>
-                    </Menu>
+                    {currentUser ? (
+                        <Menu items={MENU_ITEMS}>
+                            <span className={cx('avatar')}>
+                                <img src={imageTest} alt="avatar" className={cx('avatar-img')} />
+                            </span>
+                        </Menu>
+                    ) : (
+                        <Button primary to="/login">
+                            Đăng nhập
+                        </Button>
+                    )}
                 </div>
             </div>
         </header>
