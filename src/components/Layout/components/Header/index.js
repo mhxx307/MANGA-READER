@@ -9,6 +9,7 @@ import Button from '~/components/Button';
 import NavigationHeader from './NavigationHeader';
 import { useState } from 'react';
 import Menu from '~/components/Popper/Menu';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -32,8 +33,8 @@ function Header() {
 
     window.addEventListener('scroll', changeBackground);
 
-    const imageTest =
-        'https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg';
+    // sau nay se lay tu user
+    const imageTest = '';
 
     return (
         <header className={navbar ? cx('wrapper', 'active') : cx('wrapper')}>
@@ -42,7 +43,7 @@ function Header() {
                     {/* logo */}
                     <div className={cx('logo')}>
                         <Link to="/">
-                            <img src={images.logo} alt="logo" />
+                            <Image src={images.logo} alt="logo" />
                         </Link>
                     </div>
 
@@ -55,9 +56,16 @@ function Header() {
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </Link>
                     {currentUser ? (
+                        // truyen thong tin user vao Menu component
                         <Menu items={MENU_ITEMS}>
                             <span className={cx('avatar')}>
-                                <img src={imageTest} alt="avatar" className={cx('avatar-img')} />
+                                {/* src lay tu user */}
+                                <Image
+                                    src={imageTest || images.avatarDefault}
+                                    alt="avatar"
+                                    className={cx('avatar-img')}
+                                    fallback={images.avatarDefault}
+                                />
                             </span>
                         </Menu>
                     ) : (

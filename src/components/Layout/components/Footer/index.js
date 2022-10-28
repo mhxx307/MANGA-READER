@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import styles from './Footer.module.scss';
 import images from '~/assets/images';
 import { Link } from 'react-router-dom';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -9,7 +10,7 @@ function Footer() {
     return (
         <footer className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <img src={images.logo80} alt="logo" className={cx('logo')} />
+                <Image src={images.logo80} alt="logo" className={cx('logo')} />
                 <div className={cx('nav')}>
                     <Link to="/" className={cx('nav-item')}>
                         Điều khoảng dịch vụ

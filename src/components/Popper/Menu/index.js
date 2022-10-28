@@ -13,16 +13,14 @@ function Menu({ children, items = [] }) {
         return items.map((item, index) => <MenuItem data={item} key={index} />);
     };
 
-    const fakeUserImg =
-        'https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg';
-
     return (
         <Tippy
             interactive={true}
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
                     <PopperWrapper className={cx('menu-popper')}>
-                        <Header title="Nguyễn Văn A" avatar={fakeUserImg} />
+                        {/* truyen props avatar de lay anh */}
+                        <Header title="Nguyễn Văn A" />
                         {renderItems()}
                     </PopperWrapper>
                 </div>
