@@ -29,7 +29,7 @@ function Header() {
         }
     };
 
-    const currentUser = false;
+    const currentUser = true;
 
     window.addEventListener('scroll', changeBackground);
 
