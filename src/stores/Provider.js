@@ -4,6 +4,7 @@ import Context from '~/stores/Context';
 
 function Provider({ children }) {
     const [mangaList, setMangaList] = useState([]);
+    const [popularMangaList, setPopularMangaList] = useState([]);
     const [pageNumber, setPageNumber] = useState(1);
     const [categoryName, setCategoryName] = useState('Thể loại');
     const [statusName, setStatusName] = useState('Tình trạng');
@@ -209,6 +210,19 @@ function Provider({ children }) {
             break;
     }
 
+    const load20MangaFavorite = async () => {
+        setIsLoading(true);
+        try {
+            const { data } = await axios.get(
+                `https://manga-api-4cze.onrender.com/v1/manga-112?status=-1&sort=10&page=1&limit=20`,
+            );
+            setPopularMangaList((prevMangaList) => [...prevMangaList, ...data]);
+        } catch (error) {
+            throw new Error(error);
+        }
+        setIsLoading(false);
+    };
+
     const loadMoreManga = async () => {
         setIsLoading(true);
         try {
@@ -226,7 +240,7 @@ function Provider({ children }) {
         setIsLoading(true);
         try {
             const { data } = await axios.get(
-                `https://manga-api-4cze.onrender.com/v1/${category}?status=${status}&page=${pageNumber}`,
+                `https://manga-api-4cze.onrender.com/v1/${category}?status=${status}&page=${pageNumber}&sort=${sort}`,
             );
             setMangaList((prevMangaList) => [...prevMangaList, ...data]);
         } catch (error) {
@@ -256,6 +270,10 @@ function Provider({ children }) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [categoryName, pageNumber, statusName, sortName]);
 
+    useEffect(() => {
+        load20MangaFavorite();
+    }, []);
+
     return (
         <Context.Provider
             value={{
@@ -269,6 +287,7 @@ function Provider({ children }) {
                 setSortName,
                 isLoading,
                 setIsLoading,
+                popularMangaList,
             }}
         >
             {children}
