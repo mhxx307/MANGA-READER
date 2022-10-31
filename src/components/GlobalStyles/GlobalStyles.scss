@@ -30,7 +30,7 @@ body {
     font-size: 1.6rem;
     font-family: 'Fira Sans', sans-serif;
     line-height: 24px;
-    text-rendering: optimizeSpeed;
+    // text-rendering: optimizeSpeed;
     background-color: var(--black-color);
     color: var(--white-color);
 }
@@ -69,14 +69,4 @@ li {
     to {
         opacity: 1;
     }
-}
-
-.swiper-button-prev {
-    color: rgb(255, 255, 255);
-    background-color: red;
-}
-
-.swiper-button-next {
-    color: rgb(255, 255, 255);
-    background-color: red;
 }
