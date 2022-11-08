@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 
 function MangaItem({ manga, color }) {
     return (
-        <Link to="/mangaDetail" className={cx('wrapper')}>
+        <Link to={manga.nameAndId} className={cx('wrapper')}>
             <Image
                 src={manga.image}
                 alt="manga"

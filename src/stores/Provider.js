@@ -1,6 +1,6 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Context from '~/stores/Context';
+import * as loadMangaService from '~/services/loadMangaService';
 
 function Provider({ children }) {
     const [mangaList, setMangaList] = useState([]);
@@ -212,40 +212,28 @@ function Provider({ children }) {
 
     const load20MangaFavorite = async () => {
         setIsLoading(true);
-        try {
-            const { data } = await axios.get(
-                `https://manga-api-4cze.onrender.com/v1/manga-112?status=-1&sort=10&page=1&limit=20`,
-            );
-            setPopularMangaList((prevMangaList) => [...prevMangaList, ...data]);
-        } catch (error) {
-            throw new Error(error);
-        }
+
+        const data = await loadMangaService.load20MangaFavorite();
+        setPopularMangaList((prevMangaList) => [...prevMangaList, ...data]);
+
         setIsLoading(false);
     };
 
     const loadMoreManga = async () => {
         setIsLoading(true);
-        try {
-            const { data } = await axios.get(
-                `https://manga-api-4cze.onrender.com/v1?status=${status}&sort=${sort}&page=${pageNumber}`,
-            );
-            setMangaList((prevMangaList) => [...prevMangaList, ...data]);
-        } catch (error) {
-            throw new Error(error);
-        }
+
+        const data = await loadMangaService.loadManga(status, sort, pageNumber);
+        setMangaList((prevMangaList) => [...prevMangaList, ...data]);
+
         setIsLoading(false);
     };
 
     const loadMoreMangaByCategory = async () => {
         setIsLoading(true);
-        try {
-            const { data } = await axios.get(
-                `https://manga-api-4cze.onrender.com/v1/${category}?status=${status}&page=${pageNumber}&sort=${sort}`,
-            );
-            setMangaList((prevMangaList) => [...prevMangaList, ...data]);
-        } catch (error) {
-            throw new Error(error);
-        }
+
+        const data = await loadMangaService.loadMangaByCategory(status, sort, pageNumber, category);
+        setMangaList((prevMangaList) => [...prevMangaList, ...data]);
+
         setIsLoading(false);
     };
 

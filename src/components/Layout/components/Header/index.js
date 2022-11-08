@@ -1,6 +1,4 @@
 import classNames from 'classnames/bind';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCloudArrowUp, faMagnifyingGlass, faSignOut } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 import images from '~/assets/images';
@@ -10,18 +8,20 @@ import NavigationHeader from './NavigationHeader';
 import { useState } from 'react';
 import Menu from '~/components/Popper/Menu';
 import Image from '~/components/Image';
+import routesConfig from '~/config/routes';
+import { SearchIcon, SignOutIcon, UploadIcon } from '~/components/Icons';
 
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
-    { icon: <FontAwesomeIcon icon={faCloudArrowUp} />, title: 'Upload' },
-    { icon: <FontAwesomeIcon icon={faSignOut} />, title: 'Đăng xuất' },
+    { icon: <UploadIcon className={cx('menu-icon')} />, title: 'Upload' },
+    { icon: <SignOutIcon className={cx('menu-icon')} />, title: 'Đăng xuất' },
 ];
 
 function Header() {
     const [navbar, setNavbar] = useState(false);
 
-    const changeBackground = () => {
+    const showBackground = () => {
         if (window.scrollY >= 64) {
             setNavbar(true);
         } else {
@@ -31,7 +31,7 @@ function Header() {
 
     const currentUser = true;
 
-    window.addEventListener('scroll', changeBackground);
+    window.addEventListener('scroll', showBackground);
 
     // sau nay se lay tu user
     const imageTest = '';
@@ -42,7 +42,7 @@ function Header() {
                 <div className={cx('inner-left')}>
                     {/* logo */}
                     <div className={cx('logo')}>
-                        <Link to="/">
+                        <Link to={routesConfig.home}>
                             <Image src={images.logo} alt="logo" />
                         </Link>
                     </div>
@@ -52,8 +52,8 @@ function Header() {
                 </div>
 
                 <div className={cx('inner-right')}>
-                    <Link to="/search" className={cx('search-icon')}>
-                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    <Link to={routesConfig.search} className={cx('search-icon')}>
+                        <SearchIcon className={cx('menu-icon')} />
                     </Link>
                     {currentUser ? (
                         // truyen thong tin user vao Menu component
@@ -69,7 +69,7 @@ function Header() {
                             </span>
                         </Menu>
                     ) : (
-                        <Button primary to="/login">
+                        <Button primary to={routesConfig.login}>
                             Đăng nhập
                         </Button>
                     )}

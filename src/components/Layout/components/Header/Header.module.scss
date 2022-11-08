@@ -44,6 +44,7 @@
 }
 
 .search-icon {
+    display: flex;
     font-size: 2rem;
     margin: 0 16px;
     color: var(--white-color);
@@ -64,4 +65,11 @@
         object-fit: cover;
         cursor: pointer;
     }
+}
+
+// menu
+.menu-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
 }
