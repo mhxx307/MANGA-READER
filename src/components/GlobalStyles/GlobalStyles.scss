@@ -33,6 +33,7 @@ body {
     // text-rendering: optimizeSpeed;
     background-color: var(--black-color);
     color: var(--white-color);
+    overflow-y: overlay;
 }
 
 button,

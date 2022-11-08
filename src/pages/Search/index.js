@@ -1,4 +1,4 @@
-import { faAngleDown, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import { useContext } from 'react';
@@ -7,6 +7,7 @@ import MangaList from './MangaList';
 import styles from './Search.module.scss';
 import { categories, status } from '~/stores/DropdownData';
 import Context from '~/stores/Context';
+import { SearchIcon } from '~/components/Icons';
 
 const cx = classNames.bind(styles);
 function Search() {
@@ -23,10 +24,7 @@ function Search() {
                     <li className={cx('nav-item')}>
                         <p>Tìm kiếm</p>
                         <div className={cx('input-wrap')}>
-                            <FontAwesomeIcon
-                                icon={faMagnifyingGlass}
-                                className={cx('search-icon')}
-                            />
+                            <SearchIcon className={cx('search-icon')} />
                             <input className={cx('input')} placeholder="Enter manga name..." />
                         </div>
                     </li>

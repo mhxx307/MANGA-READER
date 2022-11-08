@@ -28,6 +28,8 @@
         margin-bottom: 8px;
     }
     .input-wrap {
+        display: flex;
+        align-items: center;
         background-color: var(--background-color-input);
         padding-left: 10px;
         border: 1px solid var(--white-color);
@@ -35,12 +37,27 @@
         &:focus-within {
             border: 1px solid var(--primary-color);
         }
-    }
-    .input {
-        background-color: var(--background-color-input);
-        color: var(--white-blur-color);
-        padding: 10px 25px 10px 10px;
-        font-size: 1.6rem;
+
+        .search-icon {
+            cursor: pointer;
+            &:hover {
+                color: var(--primary-color);
+            }
+            &:active {
+                color: var(--white-color);
+            }
+        }
+
+        .input {
+            background-color: var(--background-color-input);
+            color: var(--white-blur-color);
+            padding: 10px 25px 10px 10px;
+            font-size: 1.6rem;
+        }
+
+        // .input:not(:placeholder-shown) + .search-icon {
+        //     color: #ef5555;
+        // }
     }
 }
 

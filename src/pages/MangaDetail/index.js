@@ -1,5 +1,5 @@
 function MangaDetail() {
-    return <div>Manga info page</div>;
+    return <div className="wrapper">Manga info page</div>;
 }
 
 export default MangaDetail;

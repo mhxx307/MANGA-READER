@@ -2,7 +2,7 @@ const routesConfig = {
     home: '/',
     search: '/search',
     lightNovel: '/lightNovel',
-    mangaDetail: '/@:mangaName',
+    mangaDetail: '/detail',
     login: '/login',
     chapterReading: '/chapterReading',
 };

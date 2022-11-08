@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import Image from '~/components/Image';
 import styles from './MangaItem.module.scss';
 import images from '~/assets/images';
+import routesConfig from '~/config/routes';
 
 const cx = classNames.bind(styles);
 
 function MangaItem({ manga, color }) {
     return (
-        <Link to={manga.nameAndId} className={cx('wrapper')}>
+        <Link to={routesConfig.mangaDetail} className={cx('wrapper')}>
             <Image
                 src={manga.image}
                 alt="manga"
